@@ -30,3 +30,8 @@ void Game::Update()
 {
 	std::cout << " Game Update" << std::endl;
 }
+
+void Game::Close()
+{
+	std::cout << " Close Init" << std::endl;
+}

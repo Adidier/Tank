@@ -28,3 +28,8 @@ void Configuration::Update()
 {
 	std::cout << " Configuration Update" << std::endl;
 }
+
+void Configuration::Close()
+{
+	std::cout << " Close Init" << std::endl;
+}

@@ -3,8 +3,9 @@
 #include "Menu.h"
 int main(int argc, char *argv[])
 {
-	GameStateManager manager;
-	manager.SetState(new Menu());
-	manager.GameLoop();
+	GameStateManager *manager = new GameStateManager();
+	manager->SetState(new Menu());
+	manager->GameLoop();
+	delete manager;
 	return 0;
 }

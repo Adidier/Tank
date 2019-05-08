@@ -9,5 +9,6 @@ public:
 	void Draw() override;
 	void Input() override;
 	void Update() override;
+	void Close() override;
 };
 

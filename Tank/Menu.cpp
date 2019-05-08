@@ -28,3 +28,8 @@ void Menu::Update()
 {
 	std::cout << " Menu Update" << std::endl;
 }
+
+void Menu::Close()
+{
+	std::cout << " Close Init" << std::endl;
+}
