@@ -11,7 +11,7 @@ Game::~Game()
 }
 
 
-void Game::Init()
+void Game::Init(Platform * platform)
 {
 	std::cout << " Game Init" << std::endl;
 }

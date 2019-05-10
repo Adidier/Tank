@@ -1,9 +1,10 @@
 #pragma once
+#include "Platform.h"
 
 class GameState
 {
 public:
-	virtual void Init() = 0;
+	virtual void Init(Platform * platform) = 0;
 	virtual void Draw() = 0;
 	virtual void Input() = 0;
 	virtual void Update() = 0;

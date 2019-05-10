@@ -2,6 +2,8 @@
 #include "SDL.h"
 #include<iostream>
 
+SDL_Renderer *Platform::renderer;
+
 Platform::Platform(std::string name)
 {
 	width = 640;
@@ -37,16 +39,15 @@ void Platform::RenderPresent()
 	SDL_RenderPresent(renderer);
 }
 
-//void Platform::RenderImage(Image *image, int x, int y)
-//{
-//	renderTexture(image, x, y);
-//}
-//
-//void Platform::RenderImage(Image *image, int x, int y, double angle)
-//{
-//	renderTexture(image, x, y, angle);
-//}
+void Platform::RenderImage(Image *image, int x, int y)
+{
+	RenderTexture(image, x, y,0);
+}
 
+void Platform::RenderTexture(Image * image,int x,int y, double a)
+{
+	SDL_RenderCopyEx(renderer, image->GetTexture(), NULL, NULL, a, NULL, SDL_FLIP_NONE);
+}
 
 Platform::~Platform()
 {
