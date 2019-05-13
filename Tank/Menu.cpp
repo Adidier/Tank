@@ -26,9 +26,14 @@ void Menu::Draw()
 	platform->RenderPresent();
 }
 
-void Menu::Input()
+bool Menu::Input(int keyInput)
 {
 	std::cout << " Menu Input" << std::endl;
+	if (keyInput == 27)
+	{
+		exit(1);
+	}
+	return false;
 }
 
 void Menu::Update()

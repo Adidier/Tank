@@ -21,9 +21,10 @@ void Game::Draw()
 	std::cout << " Game Draw" << std::endl;
 }
 
-void Game::Input()
+bool Game::Input(int keyInput)
 {
 	std::cout << " Game Input" << std::endl;
+	return false;
 }
 
 void Game::Update()

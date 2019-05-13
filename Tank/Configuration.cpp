@@ -19,9 +19,10 @@ void Configuration::Draw()
 	std::cout << " Configuration Draw" << std::endl;
 }
 
-void Configuration::Input()
+bool Configuration::Input(int keyInput)
 {
 	std::cout << " Configuration Input" << std::endl;
+	return false;
 }
 
 void Configuration::Update()

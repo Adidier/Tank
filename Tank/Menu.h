@@ -12,7 +12,7 @@ public:
 	~Menu();
 	void Init(Platform * platform) override;
 	void Draw() override;
-	void Input() override;
+	bool Input(int keyInput) override;
 	void Update() override;
 	void Close() override;
 };

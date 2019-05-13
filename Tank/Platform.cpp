@@ -1,6 +1,7 @@
 #include "Platform.h"
 #include "SDL.h"
 #include<iostream>
+#include "GameState.h"
 
 SDL_Renderer *Platform::renderer;
 
@@ -46,9 +47,21 @@ void Platform::RenderImage(Image *image, int x, int y)
 
 void Platform::RenderTexture(Image * image,int x,int y, double a)
 {
-	SDL_RenderCopyEx(renderer, image->GetTexture(), NULL, NULL, a, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, image->GetTexture(),
+		NULL, NULL, a, NULL, SDL_FLIP_NONE);
 }
 
 Platform::~Platform()
 {
+}
+
+void Platform::CheckEvent(GameState *obj, 
+	bool (GameState::*f)(int))
+{
+	SDL_Event e;
+	while (SDL_PollEvent(&e)) {
+		if (e.type == SDL_KEYDOWN) {
+			(obj->*f)(e.key.keysym.sym);
+		}
+	}
 }
