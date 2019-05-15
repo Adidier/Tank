@@ -34,7 +34,7 @@ void GameStateManager::GameLoop()
 
 void GameStateManager::SetState(GameState *state)
 {
-	state->Init(platform);
+	state->Init(platform,this);
 	states.push(state);
 }
 

@@ -9,7 +9,7 @@ Configuration::~Configuration()
 {
 }
 
-void Configuration::Init(Platform * platform)
+void Configuration::Init(Platform * platform, GameStateManager *manager)
 {
 	std::cout << " Configuration Init" << std::endl;
 }

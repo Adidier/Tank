@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Game.h"
 #include<iostream>
 
 Menu::Menu()
@@ -10,10 +11,11 @@ Menu::~Menu()
 {
 }
 
-void Menu::Init(Platform * platform)
+void Menu::Init(Platform * platform, GameStateManager *manager)
 {
 	std::cout << " Menu Init" << std::endl;
 	this->platform = platform;
+	this->manager = manager;
 	background = new Image();
 	background->LoadImage("../Assets/Images/background.png");
 }
@@ -32,6 +34,10 @@ bool Menu::Input(int keyInput)
 	if (keyInput == 27)
 	{
 		exit(1);
+	}
+	else
+	{ 
+		manager->SetState(new Game());
 	}
 	return false;
 }

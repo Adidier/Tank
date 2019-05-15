@@ -5,7 +5,7 @@ class Configuration : public GameState
 public:
 	Configuration();
 	~Configuration();
-	void Init(Platform * platform) override;
+	void Init(Platform * platform, GameStateManager *manager) override;
 	void Draw() override;
 	bool Input(int keyInput) override;
 	void Update() override;

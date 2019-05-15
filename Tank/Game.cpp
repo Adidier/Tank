@@ -11,14 +11,18 @@ Game::~Game()
 }
 
 
-void Game::Init(Platform * platform)
+void Game::Init(Platform * platform, GameStateManager *manager)
 {
+	this->platform = platform;
 	std::cout << " Game Init" << std::endl;
 }
 
 void Game::Draw()
 {
 	std::cout << " Game Draw" << std::endl;
+	platform->RenderClear();	
+	
+	platform->RenderPresent();
 }
 
 bool Game::Input(int keyInput)

@@ -3,6 +3,8 @@
 #include "Platform.h"
 #include <stack>
 
+class GameState;
+
 class GameStateManager
 {
 private:
