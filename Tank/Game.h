@@ -4,6 +4,8 @@ class Game : public GameState
 {
 private:
 	Platform * platform;
+	Image *player;
+	int playerX, playerY;
 public:
 	Game();
 	~Game();
