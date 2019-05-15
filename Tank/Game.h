@@ -1,11 +1,13 @@
 #pragma once
 #include "GameState.h"
+#include "Tank.h"
 class Game : public GameState
 {
 private:
 	Platform * platform;
-	Image *player;
-	int playerX, playerY;
+	Tank *player;
+
+
 public:
 	Game();
 	~Game();

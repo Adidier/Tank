@@ -40,9 +40,9 @@ void Platform::RenderPresent()
 	SDL_RenderPresent(renderer);
 }
 
-void Platform::RenderImage(Image *image, int x, int y)
+void Platform::RenderImage(Image *image, int x, int y, float angle)
 {
-	RenderTexture(image, x, y,0);
+	RenderTexture(image, x, y, angle);
 }
 
 void Platform::RenderTexture(Image * image,int x,int y, double a)

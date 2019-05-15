@@ -24,7 +24,7 @@ void Menu::Draw()
 {
 	platform->RenderClear();
 	std::cout << " Menu Draw" << std::endl;
-	platform->RenderImage(background, 0, 0);
+	platform->RenderImage(background, 0, 0, 0);
 	platform->RenderPresent();
 }
 

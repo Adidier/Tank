@@ -13,32 +13,39 @@ Game::~Game()
 
 void Game::Init(Platform * platform, GameStateManager *manager)
 {
+	player = new Tank();
+	player->Init(platform);
 	this->platform = platform;
 	std::cout << " Game Init" << std::endl;
-	player = new Image();
-	player->LoadImage("../Assets/Images/Tank.png");
-	playerX = 100;
-	playerY = 100;
 }
 
 void Game::Draw()
 {
 	std::cout << " Game Draw" << std::endl;
 	platform->RenderClear();	
-	platform->RenderImage(player, playerX, playerY);
+	player->Draw();
 	platform->RenderPresent();
 }
 
 bool Game::Input(int keyInput)
 {
-	if (keyInput == 1073741906)
-	{
-		playerY--;
-	}
-	else if (keyInput == 1073741905)
-	{
-		playerY++;
-	}
+	//if (keyInput ==	1073741904)
+	//{
+	//	angle -= 5;
+	//}
+	//else if	(keyInput == 1073741903) 
+	//{
+	//	angle += 5;
+	//}
+
+	//if (keyInput == 1073741906)
+	//{
+	//	playerY--;
+	//}
+	//else if (keyInput == 1073741905)
+	//{
+	//	playerY++;
+	//}
 	std::cout << " Game Input" << std::endl;
 	return false;
 }
