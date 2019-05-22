@@ -1,11 +1,13 @@
 #pragma once
 #include "GameState.h"
 #include "Tank.h"
+#include"HeavyTank.h"
 class Game : public GameState
 {
 private:
 	Platform * platform;
 	Tank *player;
+	HeavyTank *enemy;
 
 
 public:

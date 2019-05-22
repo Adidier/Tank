@@ -1,5 +1,6 @@
 #include "Game.h"
 #include<iostream>
+#include "Collision.h"
 
 Game::Game()
 {
@@ -15,6 +16,9 @@ void Game::Init(Platform * platform, GameStateManager *manager)
 {
 	player = new Tank();
 	player->Init(platform);
+	enemy = new HeavyTank();
+	enemy->Load(platform);
+
 	this->platform = platform;
 	std::cout << " Game Init" << std::endl;
 }
@@ -24,28 +28,13 @@ void Game::Draw()
 	std::cout << " Game Draw" << std::endl;
 	platform->RenderClear();	
 	player->Draw();
+	enemy->Draw();
 	platform->RenderPresent();
 }
 
 bool Game::Input(int keyInput)
 {
-	//if (keyInput ==	1073741904)
-	//{
-	//	angle -= 5;
-	//}
-	//else if	(keyInput == 1073741903) 
-	//{
-	//	angle += 5;
-	//}
-
-	//if (keyInput == 1073741906)
-	//{
-	//	playerY--;
-	//}
-	//else if (keyInput == 1073741905)
-	//{
-	//	playerY++;
-	//}
+	player->Input(keyInput);
 	std::cout << " Game Input" << std::endl;
 	return false;
 }
@@ -53,6 +42,12 @@ bool Game::Input(int keyInput)
 void Game::Update()
 {
 	std::cout << " Game Update" << std::endl;
+	if (Collision::CircleCollision(player->GetRadius(), enemy->GetRadius(),
+		player->GetPositionX(), player->GetPositionY(),
+		enemy->GetPositionX(), enemy->GetPositionY()))
+	{
+		enemy->energy = 0;
+	}
 }
 
 void Game::Close()
