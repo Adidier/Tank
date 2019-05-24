@@ -18,6 +18,10 @@ void Game::Init(Platform * platform, GameStateManager *manager)
 	player->Init(platform);
 	enemy = new HeavyTank();
 	enemy->Load(platform);
+	bullet = new Bullet(100, 100, player->GetAngle(), 10, 1);
+	bullet->Init(platform);
+	map = new Map();
+	map->Init(platform);
 
 	this->platform = platform;
 	std::cout << " Game Init" << std::endl;
@@ -29,6 +33,8 @@ void Game::Draw()
 	platform->RenderClear();	
 	player->Draw();
 	enemy->Draw();
+	bullet->Draw();
+	map->Draw();
 	platform->RenderPresent();
 }
 
@@ -41,6 +47,8 @@ bool Game::Input(int keyInput)
 
 void Game::Update()
 {
+	bullet->Update();
+
 	std::cout << " Game Update" << std::endl;
 	if (Collision::CircleCollision(player->GetRadius(), enemy->GetRadius(),
 		player->GetPositionX(), player->GetPositionY(),

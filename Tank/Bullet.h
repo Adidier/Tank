@@ -1,23 +1,23 @@
 #pragma once
 #include "GameObject.h"
-#include "Image.h"
-class Tank:GameObject
+
+class Bullet : public GameObject
 {
 public:
-	Tank();
-	~Tank();
-	void Draw() override;
 	void Init(Platform *platform) override;
-	void Input(int keInput);
+	void Draw() override;
+	Bullet(int x, int y, float a, float r, float v);
+	~Bullet();
 	float GetRadius();
-	float GetAngle();
 	int GetPositionX();
 	int GetPositionY();
+	void Update();
 private:
 	float angle;
 	int positionX, positionY;
 	Image *image;
 	Platform *platform;
 	float radius;
+	float velocity;
 };
 

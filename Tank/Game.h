@@ -2,12 +2,17 @@
 #include "GameState.h"
 #include "Tank.h"
 #include"HeavyTank.h"
+#include "Bullet.h"
+#include "Map.h"
+
 class Game : public GameState
 {
 private:
 	Platform * platform;
 	Tank *player;
 	HeavyTank *enemy;
+	Bullet *bullet;
+	Map *map;
 
 
 public:
