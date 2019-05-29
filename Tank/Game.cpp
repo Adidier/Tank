@@ -16,11 +16,14 @@ void Game::Init(Platform * platform, GameStateManager *manager)
 {
 	player = new Tank();
 	player->Init(platform);
+	player->SetPool(&bulletPool);
 	enemy = new HeavyTank();
-	enemy->Load(platform);
+	enemy->Init(platform);
+	enemy->SetPool(&bulletPool);
 	bullet = new Bullet(100, 100, player->GetAngle(), 10, 1);
 	bullet->Init(platform);
 	map = new Map();
+	map->SetPool(&bulletPool);
 	map->Init(platform);
 
 	this->platform = platform;
@@ -33,7 +36,12 @@ void Game::Draw()
 	platform->RenderClear();	
 	player->Draw();
 	enemy->Draw();
-	bullet->Draw();
+	
+	for (auto object : bulletPool)
+	{
+		object->Draw();
+	}
+
 	map->Draw();
 	platform->RenderPresent();
 }
@@ -47,15 +55,16 @@ bool Game::Input(int keyInput)
 
 void Game::Update()
 {
-	bullet->Update();
+	for (auto object : bulletPool)
+	{
+		object->Update();
+	}
+
+	enemy->Update();
+	player->Update();
 
 	std::cout << " Game Update" << std::endl;
-	if (Collision::CircleCollision(player->GetRadius(), enemy->GetRadius(),
-		player->GetPositionX(), player->GetPositionY(),
-		enemy->GetPositionX(), enemy->GetPositionY()))
-	{
-		enemy->energy = 0;
-	}
+
 }
 
 void Game::Close()

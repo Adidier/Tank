@@ -4,6 +4,7 @@
 #include"HeavyTank.h"
 #include "Bullet.h"
 #include "Map.h"
+#include <list>
 
 class Game : public GameState
 {
@@ -13,6 +14,7 @@ private:
 	HeavyTank *enemy;
 	Bullet *bullet;
 	Map *map;
+	std::list<GameObject *> bulletPool;
 
 
 public:

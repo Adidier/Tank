@@ -19,19 +19,9 @@ void Tile::Draw()
 	platform->RenderImage(image, positionX, positionY, 0);
 }
 
-float Tile::GetRadius()
+void Tile::Update()
 {
-	return radius;
-}
 
-int Tile::GetPositionX()
-{
-	return positionX;
-}
-
-int Tile::GetPositionY()
-{
-	return positionY;
 }
 
 Tile::~Tile()

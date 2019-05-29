@@ -1,27 +1,25 @@
 #pragma once
-#include "Enemy.h"
 #include "Image.h"
 #include "Platform.h"
+#include "GameObject.h"
+#include <list>
 
-class HeavyTank :
-	public Enemy
+class HeavyTank : public GameObject
 {
 private:
 	float angle;
-	int positionX, positionY;
 	Image *image;
 	Platform *platform;
-	float radius;
-	
+	std::list<GameObject *> *bulletPool;
+
 public:
 	int energy;
 	HeavyTank();
-	void Load(Platform *platform) override;
-	void Upadate() override;
+	void Init(Platform *platform) override;
+	void Update() override;
 	void Draw() override;
 	~HeavyTank();
-	float GetRadius();
-	int GetPositionX();
-	int GetPositionY();
+	void Collision();
+	void SetPool(std::list<GameObject *> *bulletPool);
 };
 

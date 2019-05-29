@@ -26,18 +26,6 @@ void Bullet::Draw()
 	platform->RenderImage(image, positionX, positionY, angle);
 }
 
-float Bullet::GetRadius()
-{
-	return radius;
-}
-int Bullet::GetPositionX()
-{
-	return positionX;
-}
-int Bullet::GetPositionY()
-{
-	return positionY;
-}
 void Bullet::Update()
 {
 	positionX += (float)cos((angle * M_PI) / 180) * 2;
