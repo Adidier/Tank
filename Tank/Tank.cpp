@@ -22,36 +22,40 @@ void Tank::Init(Platform *platform)
 	image->LoadImage("../Assets/Images/Tank.png");
 	positionX = 100;
 	positionY = 100;
-	angle = 100;
+	angle = 0;
+	radius = image->GetHeight() / 2;
 	this->platform = platform;
-	radius = 40;
 	energy = 100;
+	tileCollision = false;
 }
 
 void Tank::Draw()
 {
 	if (energy != 0)
 	{
-		platform->RenderImage(image, positionX - image->GetWidth() / 2, positionY - image->GetHeight() / 2, angle);
+		platform->RenderImage(image, positionX , positionY , angle);
+		#ifdef _DEBUG_TANK_
+			platform->DrawRect(positionX , positionY , image->GetWidth(), image->GetHeight());
+		#endif
 	}
 }
 
-void Tank::Collision()
+bool Tank::Collision()
 {
 	for (auto object : *bulletPool)
 	{
-		if (Collision::CircleCollision(GetRadius(), object->GetRadius(),
-			GetPositionX(), GetPositionY(),
-			object->GetPositionX(), object->GetPositionY()))
+		if (Collision::BoxCollision(positionX, positionY,image->GetWidth(),image->GetHeight(),
+			object->GetPositionX(), object->GetPositionY(), 32,32))
 		{
-			energy = 0;
+			return true;
 		}
 	}
+	return false;
 }
 
 void Tank::Update()
 {
-	Collision();
+	
 }
 
 void Tank::Input(int keyInput)
@@ -74,15 +78,38 @@ void Tank::Input(int keyInput)
 		angle += 5;
 	}
 
-	if (keyInput == 1073741906)
+	if (keyInput == 1073741906 )
 	{
 		positionX += (float)cos((angle * M_PI)/ 180) * 5;
+		if(Collision())
+		{
+			positionX -= (float)cos((angle * M_PI) / 180) * 7;
+			return;
+		}
+
 		positionY += (float)sin((angle * M_PI) / 180) * 5;
+		if (Collision())
+		{
+			positionY -= (float)sin((angle * M_PI) / 180) * 7;
+			return;
+		}
+
 	}
 	else if (keyInput == 1073741905)
 	{
 		positionX -= (float)cos((angle * M_PI) / 180) * 5;
+		if (Collision())
+		{
+			positionX += (float)cos((angle * M_PI) / 180) * 7;
+			return;
+		}
+		
 		positionY -= (float)sin((angle * M_PI) / 180) * 5;
+		if (Collision())
+		{
+			positionY += (float)sin((angle * M_PI) / 180) * 7;
+			return;
+		}
 	}
 }
 

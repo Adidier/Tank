@@ -17,6 +17,9 @@ void Tile::Init(Platform *platform)
 void Tile::Draw()
 {
 	platform->RenderImage(image, positionX, positionY, 0);
+	#ifdef _DEBUG_TANK_
+		platform->DrawRect(positionX , positionY, image->GetWidth(), image->GetHeight());
+	#endif
 }
 
 void Tile::Update()

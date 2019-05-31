@@ -12,7 +12,7 @@ public:
 	void Init(Platform *platform) override;
 	void Input(int keInput);
 	void Update() override;
-	void Collision();
+	bool Collision();
 	float GetRadius();
 	float GetAngle();
 	int GetPositionX();
@@ -25,6 +25,8 @@ private:
 	Platform *platform;
 	float radius;
 	int energy;
+
+	bool tileCollision;
 	std::list<GameObject *> *bulletPool;
 };
 
