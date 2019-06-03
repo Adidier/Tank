@@ -62,7 +62,7 @@ void Tank::Input(int keyInput)
 {
 	if (keyInput == 32)
 	{
-		Bullet * newBullet = new Bullet(positionX, positionY,angle,1,1);
+		Bullet * newBullet = new Bullet(positionX+image->GetWidth()/2, positionY + image->GetHeight() / 2,angle,1,1);
 		newBullet->Init(platform);
 
 		bulletPool->push_back(newBullet);

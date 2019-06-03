@@ -19,7 +19,7 @@ public:
 	void Update() override;
 	void Draw() override;
 	~HeavyTank();
-	void Collision();
+	bool Collision();
 	void SetPool(std::list<GameObject *> *bulletPool);
 };
 
